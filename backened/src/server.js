@@ -34,9 +34,13 @@ const PORT = ENV.PORT || 5000;
 const startSever = async () => {
   try {
     await connectDB();
-    app.listen(PORT, () =>
-      console.info(`server running on http://localhost:${PORT}`)
-    );
+
+    // listen for local development
+    if (ENV.NODE_ENV !== "production") {
+      app.listen(PORT, () =>
+        console.info(`server running on http://localhost:${PORT}`)
+      );
+    }
   } catch (error) {
     console.error("Error", error);
     process.exit(1);
@@ -45,4 +49,5 @@ const startSever = async () => {
 
 startSever();
 
+// export for vercel
 export default app;
