@@ -7,7 +7,7 @@ import {
   followUser,
 } from "../controllers/user.controller.js";
 const router = express.Router();
-import protectRoute from "../middleware/auth.middleware.js";
+import { protectRoute } from "../middleware/auth.middleware.js";
 
 // public route
 router.get("/profile/:username", getUserProfile);
