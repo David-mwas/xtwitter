@@ -1,15 +1,17 @@
-import { Text, View } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
+import React from "react";
+import { useClerk, } from "@clerk/clerk-expo";
 
-export default function Index() {
+const HomeScreen = () => {
+  const { signOut } = useClerk();
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text className="text-red-500">Edit app/index.tsx to edit this screen.yeye</Text>
+    <View>
+      <Text>index</Text>
+      <TouchableOpacity onPress={() => signOut()}>
+        <Text>logout</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
+
+export default HomeScreen;
